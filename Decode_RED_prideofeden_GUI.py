@@ -17,5 +17,6 @@ for i in Path(dir).glob("**/*.iab"):
     with open(i, 'rb') as f:
         header = f.read()
         UnityFS = header.find(b'\x55\x6E\x69\x74\x79\x46\x53')
+    os.remove(os.path.join(dir, i))
     with open(str(i2[:-4])+'.unity3d', 'wb') as f:
         f.write(header[UnityFS:]) #Exporting binaries from UnityFS onwards
